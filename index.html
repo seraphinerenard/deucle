@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>DEUCLE — the daily tennis word</title>
+    <meta name="description" content="A daily five-letter word puzzle drawn from tennis: shots, scoring, surfaces and champions." />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="masthead">
+      <h1 class="wordmark">DEUCLE</h1>
+      <p class="puzzle" id="puzzle-number"></p>
+    </header>
+
+    <p class="hint" id="hint"></p>
+
+    <main>
+      <details class="guide" id="guide">
+        <summary>How to play</summary>
+        <p class="guide-lead">
+          Guess the word in six tries. Any five letters are accepted, so you can
+          probe with a word that is not on the list; only the answers are
+          tennis terms.
+        </p>
+        <ul class="examples">
+          <li>
+            <b class="sample" data-mark="correct">S</b>
+            <span>S is in the word and in the right place.</span>
+          </li>
+          <li>
+            <b class="sample" data-mark="present">E</b>
+            <span>E is in the word but somewhere else.</span>
+          </li>
+          <li>
+            <b class="sample" data-mark="absent">R</b>
+            <span>R is not in the word at all.</span>
+          </li>
+        </ul>
+      </details>
+
+      <div class="board" id="board" role="grid" aria-label="Guess board"></div>
+
+      <p class="stats" id="stats"></p>
+
+      <section class="end" id="end" hidden>
+        <h2 class="end-title" id="end-title"></h2>
+        <button class="share" id="share" type="button">Copy result</button>
+      </section>
+    </main>
+
+    <div class="keyboard" id="keyboard" aria-label="Keyboard"></div>
+
+    <p class="toast" id="toast" role="status" aria-live="polite"></p>
+
+    <footer class="footer">
+      <p>A new word every day at midnight, local time.</p>
+      <p class="siblings">Also daily: <a href="https://seraphinerenard.github.io/gridle/">Gridle</a> (Formula 1), <a href="https://seraphinerenard.github.io/brickle/">Brickle</a> (IndyCar)</p>
+    </footer>
+
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
