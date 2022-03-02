@@ -6,7 +6,7 @@ Play it at https://seraphinerenard.github.io/deucle/
 
 ## How it works
 
-Every answer comes from tennis. The list holds 72 words. Guesses accept any five letters, so you can probe with a word that is not in the list; only the answers are themed.
+Every answer comes from tennis. The list holds 72 words. A guess must be a real word: the game checks it against the original Wordle's 14,855 accepted guesses joined with this game's answers, so every themed term stays guessable; only the answers are themed.
 
 Tiles report each guess the way the original does. A filled tile means the letter sits in the right place, a mid-tone tile means the letter is in the word somewhere else, and a flat tile means the letter is absent. Repeated letters follow the two-pass rule: a guess claims exact positions first, then spends whatever copies the answer has left on misplaced letters.
 
@@ -24,7 +24,7 @@ The page loads `src/main.js` as a native ES module, which needs `http://` rather
 
 ## Tests
 
-The engine's rules are covered by Node's built-in test runner, which also checks the shipped word list for length, duplicates and a valid stride:
+The engine's rules are covered by Node's built-in test runner, which also checks the shipped word lists for length, duplicates and a valid stride:
 
 ```sh
 node --test

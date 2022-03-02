@@ -12,6 +12,7 @@ import {
   scoreGuess,
   shareGrid,
 } from '../src/engine.js'
+import { GUESSES, VALID_GUESSES } from '../src/guesses.js'
 import { ANSWERS, LAUNCH_DATE, STRIDE } from '../src/words.js'
 
 test('an exact guess scores every position correct', () => {
@@ -169,4 +170,33 @@ test('the share grid renders one line per guess with no emoji', () => {
 test('the board dimensions are the classic six by five', () => {
   assert.equal(WORD_LENGTH, 5)
   assert.equal(MAX_GUESSES, 6)
+})
+
+test('every accepted guess is exactly WORD_LENGTH uppercase letters', () => {
+  const pattern = new RegExp(`^[A-Z]{${WORD_LENGTH}}$`)
+  for (const word of GUESSES) {
+    assert.match(word, pattern, `${word} is not ${WORD_LENGTH} uppercase letters`)
+  }
+})
+
+test('the guess list holds no duplicates', () => {
+  assert.equal(new Set(GUESSES).size, GUESSES.length)
+})
+
+test('every answer is a valid guess', () => {
+  for (const word of ANSWERS) {
+    assert.ok(VALID_GUESSES.has(word), `${word} would be rejected by its own game`)
+  }
+})
+
+test('a string of letters that is not a word is not a valid guess', () => {
+  for (const junk of ['QQQQQ', 'AEIOU', 'XKCDZ']) {
+    assert.ok(!VALID_GUESSES.has(junk), `${junk} should be rejected`)
+  }
+})
+
+test('common words outside the theme are valid guesses', () => {
+  for (const word of ['ABOUT', 'CRANE', 'HOUSE']) {
+    assert.ok(VALID_GUESSES.has(word), `${word} should be accepted`)
+  }
 })

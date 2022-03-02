@@ -8,6 +8,7 @@ import {
   scoreGuess,
   shareGrid,
 } from './engine.js'
+import { VALID_GUESSES } from './guesses.js'
 import { ANSWERS, GAME_NAME, HINT, LAUNCH_DATE, STRIDE } from './words.js'
 
 const KEY_ROWS = ['QWERTYUIOP', 'ASDFGHJKL', 'ZXCVBNM']
@@ -156,6 +157,11 @@ function press(label) {
 function submit() {
   if (typed.length < WORD_LENGTH) {
     say(`${WORD_LENGTH} letters`)
+    return
+  }
+
+  if (!VALID_GUESSES.has(typed)) {
+    say('Not in word list')
     return
   }
 
